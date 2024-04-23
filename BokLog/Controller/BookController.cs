@@ -130,6 +130,37 @@ namespace BokLog.Controller
 
             return results;
         }
+
+        public void RemoveBook(int bookIndex)
+        {
+            if (bookIndex >= 0 && bookIndex < books.Count)
+            {
+                Book bookToRemove = books[bookIndex];
+
+                books.Remove(bookToRemove);
+
+                SaveBooksToJson(books);
+
+            }
+            else
+            {
+                // Handle invalid 
+            }
+        }
+        public void RemoveBookFromStorage(string storageName, Book bookToRemove)
+        {
+            if (books.Contains(bookToRemove) && bookToRemove.Storage == storageName)
+            {
+                books.Remove(bookToRemove);
+                SaveBooksToJson(books);
+            }
+            else
+            {
+                // Handle invalid book or storage
+            }
+        }
+
+
     }
 
 

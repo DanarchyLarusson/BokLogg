@@ -17,7 +17,7 @@ namespace BokLog.View
             bookController = controller;
         }
 
-        public void ShowStorageMenu()
+        public static void ShowStorageMenu()
         {
             while (true)
             {

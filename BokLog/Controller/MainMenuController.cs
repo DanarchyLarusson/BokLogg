@@ -14,6 +14,7 @@ namespace BokLog.Controller
         private static readonly StorageView storageView = new StorageView(bookController);
         private static readonly BookRegisterView bookRegisterView = new BookRegisterView(bookController);
         private static readonly SearchForm searchForm = new SearchForm(bookController);
+        private static readonly BookRemovalView bookRemovalView = new BookRemovalView(bookController);
 
         public static void HandleMenuInput(string userInput)
         {
@@ -22,16 +23,16 @@ namespace BokLog.Controller
                 switch (userInputInt)
                 {
                     case 1:
-                        storageView.ShowStorageMenu();
+                        StorageView.ShowStorageMenu();
                         break;
                     case 2:
                         bookRegisterView.RegisterBook();
                         break;
                     case 3:
-                        searchForm.SearchOptions();
+                        SearchForm.SearchOptions();
                         break;
                     case 4:
-                        Console.WriteLine("Loading Delete Books Menu...");
+                        BookRemovalView.ShowStorageListAndSelect();
                         break;
                     case 5:
                         Console.WriteLine("Exiting...");
@@ -75,7 +76,7 @@ namespace BokLog.Controller
                     searchForm.SearchByBookName();
                     break;
                 case "2":
-                    storageView.ShowStorageMenu();
+                    searchForm.CheckStorage();
                     break;
                 case "3":
                     MainMenu.MainMenu_();

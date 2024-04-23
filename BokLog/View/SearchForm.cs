@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using System;
 using BokLog.Controller;
 using BokLog.Helper;
 
@@ -19,7 +17,7 @@ namespace BokLog.View
             bookController = controller;
         }
 
-        public void SearchOptions()
+        public static void SearchOptions()
         {
             Console.Clear();
             Console.WriteLine("|***************************************** BOKLOGG **************************************|");
