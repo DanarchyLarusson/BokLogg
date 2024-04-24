@@ -69,6 +69,7 @@ namespace BokLog.View
 
             Console.WriteLine("\nTryck på valfri tangent för att återgå till menyn...");
             Console.ReadKey();
+            MainMenu.MainMenu_();
         }
 
         public void CheckStorage()
@@ -81,7 +82,14 @@ namespace BokLog.View
             Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
             Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
 
-            Console.WriteLine("Ange lagringsplatsens namn:");
+            Console.WriteLine("Tillgängliga lagringsplatser:");
+            var storages = bookController.GetAvailableStorages();
+            foreach (var storage in storages)
+            {
+                Console.WriteLine(storage);
+            }
+
+            Console.WriteLine("\nAnge lagringsplatsens namn:");
             string storageName = Console.ReadLine();
 
             var searchResults = bookController.SearchByStorage(storageName);
@@ -101,7 +109,9 @@ namespace BokLog.View
 
             Console.WriteLine("\nTryck på valfri tangent för att återgå till menyn...");
             Console.ReadKey();
+            MainMenu.MainMenu_();
         }
+
     }
 }
 

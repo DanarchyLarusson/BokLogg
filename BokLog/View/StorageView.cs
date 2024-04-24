@@ -51,11 +51,37 @@ namespace BokLog.View
 
             Console.WriteLine("Välj en lagring genom att skriva dess namn:");
             string selectedStorage = Console.ReadLine();
-            bookController.SelectOrCreateStorage(selectedStorage);
-            Console.WriteLine($"Vald lagring: {selectedStorage}");
+
+            if (!storages.Contains(selectedStorage))
+            {
+                Console.WriteLine($"\nDet finns ingen låda kallad '{selectedStorage}', vill du skapa '{selectedStorage}' som ny låda? (Ja/Nej):");
+                string confirmation = Console.ReadLine();
+
+                if (confirmation.Equals("Ja", StringComparison.OrdinalIgnoreCase))
+                {
+                    bookController.SelectOrCreateStorage(selectedStorage);
+                    Console.WriteLine($"Ny lagring '{selectedStorage}' skapad.");
+                    Console.ReadKey();
+                    MainMenu.MainMenu_();
+                }
+                else
+                {
+                    Console.WriteLine("Skapandet av ny lagring avbröts.");
+                    MainMenu.MainMenu_();
+                    return; 
+                }
+            }
+            else
+            {
+                bookController.SelectOrCreateStorage(selectedStorage);
+                Console.WriteLine($"Vald lagring: {selectedStorage}");
+            }
+
             Console.WriteLine("Tryck på valfri tangent för att återgå till menyn...");
             Console.ReadKey();
+            MainMenu.MainMenu_();
         }
+
 
         public void CreateNewStorage()
         {
@@ -65,6 +91,7 @@ namespace BokLog.View
             Console.WriteLine($"Skapade ny lagring: {newStorageName}");
             Console.WriteLine("Tryck på valfri tangent för att återgå till menyn...");
             Console.ReadKey();
+            MainMenu.MainMenu_();
         }
     }
 }

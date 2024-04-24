@@ -85,35 +85,44 @@ namespace BokLog.View
 
         public static void ShowConfirmationAndRemove(string selectedStorage, Book bookToRemove)
         {
-            Console.Clear();
-            Console.WriteLine("|***************************************** BOKLOGG **************************************|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            HelperMethods.WriteColoredText($"|\t\t\t\t\t BEKRÄFTA BORTTAGNING AV BOKEN \t\t\t\t|", $"BEKRÄFTA BORTTAGNING AV BOKEN", ConsoleColor.Yellow);
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-
-            Console.WriteLine($"Bok att ta bort: {bookToRemove.Title} by {bookToRemove.Author}");
-            Console.WriteLine($"Från lagringen: {selectedStorage}");
-            Console.WriteLine("\nÄr du säker på att du vill ta bort denna bok? (Ja/Nej):");
-
-            string userInput = Console.ReadLine();
-            if (userInput.Equals("Ja", StringComparison.OrdinalIgnoreCase))
+            while (true) 
             {
-                var bookController = new BookController();
-                bookController.RemoveBookFromStorage(selectedStorage, bookToRemove);
-                Console.WriteLine("Boken har tagits bort.");
-            }
-            else if (userInput.Equals("Nej", StringComparison.OrdinalIgnoreCase))
-            {
-                Console.WriteLine("Borttagningen avbröts.");
-            }
-            else
-            {
-                // Handle invalid input
-            }
+                Console.Clear();
+                Console.WriteLine("|***************************************** BOKLOGG **************************************|");
+                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+                HelperMethods.WriteColoredText($"|\t\t\t\t\t BEKRÄFTA BORTTAGNING AV BOKEN \t\t\t\t|", $"BEKRÄFTA BORTTAGNING AV BOKEN", ConsoleColor.Yellow);
+                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
 
-            Console.WriteLine("\nTryck på valfri tangent för att återgå till menyn...");
-            Console.ReadKey();
+                Console.WriteLine($"Bok att ta bort: {bookToRemove.Title} by {bookToRemove.Author}");
+                Console.WriteLine($"Från lagringen: {selectedStorage}");
+                Console.WriteLine("\nÄr du säker på att du vill ta bort denna bok? (Ja/Nej):");
+
+                string userInput = Console.ReadLine();
+                if (userInput.Equals("Ja", StringComparison.OrdinalIgnoreCase))
+                {
+                    var bookController = new BookController();
+                    bookController.RemoveBookFromStorage(selectedStorage, bookToRemove);
+                    Console.WriteLine("Boken har tagits bort.");
+                    break;
+                }
+                else if (userInput.Equals("Nej", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Borttagningen avbröts.");
+                    break; 
+                }
+                else if (userInput.Equals("x", StringComparison.OrdinalIgnoreCase))
+                {
+                    MainMenu.MainMenu_();
+                }
+                else
+                {
+                    Console.WriteLine("Ogiltigt val. Vänligen ange 'Ja', 'Nej' eller 'x' för att avsluta.");
+                }
+
+                Console.WriteLine("\nTryck på valfri tangent för att fortsätta...");
+                Console.ReadKey();
+            }
         }
     }
 }
