@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BokLog.View;
+using BokLogg.View;
 
-namespace BokLog.Helper
+namespace BokLogg.Helper
 {
     public static class HelperMethods
     {

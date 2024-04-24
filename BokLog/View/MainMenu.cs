@@ -1,13 +1,12 @@
-﻿using BokLog.Helper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BokLog.Helper;
-using BokLog.Controller;
+using BokLogg.Controller;
+using BokLogg.Helper;
 
-namespace BokLog
+namespace BokLogg.View
 {
     public class MainMenu
     {

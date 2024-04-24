@@ -1,4 +1,4 @@
-﻿using BokLog;
-using BokLog.View;
+﻿using BokLog.View;
+using BokLogg.View;
 
 MainMenu.MainMenu_();

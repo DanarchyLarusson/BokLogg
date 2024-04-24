@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BokLog.Controller;
-using BokLog.Helper;
-using BokLog.Model;
+using BokLogg.Controller;
+using BokLogg.Helper;
+using BokLogg.Model;
 
-namespace BokLog.View
+namespace BokLogg.View
 {
     public class BookRegisterView
     {

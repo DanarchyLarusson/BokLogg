@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BokLog.Controller;
-using BokLog.Helper;
-using BokLog.Model;
+using BokLogg.Controller;
+using BokLogg.Helper;
+using BokLogg.Model;
 
-namespace BokLog.View
+namespace BokLogg.View
 {
     public class BookRemovalView
     {
@@ -85,7 +85,7 @@ namespace BokLog.View
 
         public static void ShowConfirmationAndRemove(string selectedStorage, Book bookToRemove)
         {
-            while (true) 
+            while (true)
             {
                 Console.Clear();
                 Console.WriteLine("|***************************************** BOKLOGG **************************************|");
@@ -109,7 +109,7 @@ namespace BokLog.View
                 else if (userInput.Equals("Nej", StringComparison.OrdinalIgnoreCase))
                 {
                     Console.WriteLine("Borttagningen avbröts.");
-                    break; 
+                    break;
                 }
                 else if (userInput.Equals("x", StringComparison.OrdinalIgnoreCase))
                 {

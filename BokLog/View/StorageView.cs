@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BokLog.Controller;
-using BokLog.Helper;
+using BokLogg.Controller;
+using BokLogg.Helper;
 
-namespace BokLog.View
+namespace BokLogg.View
 {
     public class StorageView
     {
@@ -68,7 +68,7 @@ namespace BokLog.View
                 {
                     Console.WriteLine("Skapandet av ny lagring avbröts.");
                     MainMenu.MainMenu_();
-                    return; 
+                    return;
                 }
             }
             else

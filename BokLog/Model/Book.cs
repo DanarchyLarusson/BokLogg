@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BokLog.Model
+namespace BokLogg.Model
 {
     public class Book
     {

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BokLog;
-using BokLog.View;
+using BokLogg.View;
 
-namespace BokLog.Controller
+namespace BokLogg.Controller
 {
     public static class MenuController
     {
