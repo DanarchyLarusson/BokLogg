@@ -21,11 +21,11 @@ namespace BokLogg.View
         public static void ShowStorageListAndSelect()
         {
             Console.Clear();
-            Console.WriteLine("|***************************************** BOKLOGG **************************************|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            HelperMethods.WriteColoredText("|\t\t\t\t\t VÄLJ LAGRING ATT TA BORT FRÅN \t\t\t\t|", "VÄLJ LAGRING ATT TA BORT FRÅN", ConsoleColor.Yellow);
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText("\t\t\t\t\t VÄLJ LAGRING ATT TA BORT FRÅN \t\t\t\t", "VÄLJ LAGRING ATT TA BORT FRÅN", ConsoleColor.Yellow);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
 
             var bookController = new BookController();
             var storages = bookController.GetAvailableStorages();
@@ -35,8 +35,8 @@ namespace BokLogg.View
                 Console.WriteLine($"|\t{i + 1}. {storages[i]}\t\t\t\t\t\t\t\t\t|");
             }
 
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|*****************************************************************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t|*****************************************************************************************|");
             Console.WriteLine("Skriv in numret för lagringen att ta bort böcker ifrån:");
 
             string userInput = Console.ReadLine();

@@ -23,17 +23,17 @@ namespace BokLogg.View
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("|***************************************** BOKLOGG **************************************|");
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-                HelperMethods.WriteColoredText("|\t\t\t\t\t REGISTRERA NY BOK \t\t\t\t\t|", "REGISTRERA NY BOK", ConsoleColor.Yellow);
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+                Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                HelperMethods.WriteColoredText("\t\t\t\t\t REGISTRERA NY BOK \t\t\t\t\t", "REGISTRERA NY BOK", ConsoleColor.Yellow);
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
 
-                Console.WriteLine($"|\t\t\t\t\tVald lagring: {bookController.SelectedStorage}\t\t\t\t\t\t|");
+                Console.WriteLine($"\t\t\t\tVald lagring: {bookController.SelectedStorage}\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t|*****************************************************************************************|");
 
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-                Console.WriteLine("|*****************************************************************************************|");
 
                 Console.WriteLine("Ange titel på boken:");
                 string title = Console.ReadLine();
@@ -68,7 +68,7 @@ namespace BokLogg.View
                 if (inputKey.KeyChar == 'x' || inputKey.KeyChar == 'X')
                 {
                     MainMenu.MainMenu_();
-                    break; // Exit the loop
+                    break; 
                 }
             }
         }

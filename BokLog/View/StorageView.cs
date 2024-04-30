@@ -22,16 +22,18 @@ namespace BokLogg.View
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("|***************************************** BOKLOGG **************************************|");
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-                HelperMethods.WriteColoredText("|\t\t\t\t\t LAGRINGSALTERNATIV \t\t\t\t\t|", "LAGRINGSALTERNATIV", ConsoleColor.Yellow);
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-                Console.WriteLine("|\t\t\t\t\t\t 1. Välj befintlig lagring \t\t\t\t\t\t|");
-                Console.WriteLine("|\t\t\t\t\t\t 2. Skapa ny lagring \t\t\t\t\t\t\t|");
-                Console.WriteLine("|\t\t\t\t\t\t 3. Gå tillbaka till huvudmeny \t\t\t\t\t|");
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-                Console.WriteLine("|*****************************************************************************************|");
+                Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                HelperMethods.WriteColoredText("\t\t\t\t\t LAGRINGSALTERNATIV \t\t\t\t\t", "LAGRINGSALTERNATIV", ConsoleColor.Yellow);
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t 1. Välj befintlig lagring \t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t 2. Skapa ny lagring \t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t 3. Gå tillbaka till huvudmeny \t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t|*****************************************************************************************|");
                 Console.WriteLine("Skriv in siffran efter ditt val:");
 
                 string userInput = HelperMethods.ReadLine();

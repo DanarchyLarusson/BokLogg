@@ -20,17 +20,20 @@ namespace BokLogg.View
         public static void SearchOptions()
         {
             Console.Clear();
-            Console.WriteLine("|***************************************** BOKLOGG **************************************|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            HelperMethods.WriteColoredText("|\t\t\t\t\t SÖKALTERNATIV \t\t\t\t\t\t|", "SÖKALTERNATIV", ConsoleColor.Yellow);
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t 1. Sök efter bok \t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t 2. Lager kontroll \t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t 3. Tillbaka till huvudmeny \t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|*****************************************************************************************|");
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText("\t\t\t\t\t\t SÖKALTERNATIV \t\t\t\t\t\t", "SÖKALTERNATIV", ConsoleColor.Yellow);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 1. Sök efter bok \t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 2. Lager kontroll \t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 3. Tillbaka till huvudmeny \t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t|*****************************************************************************************|");
             Console.WriteLine("Skriv in siffran efter ditt val:");
+
 
             string userInput = Console.ReadLine();
             MenuController.HandleSearchOptionsInput(userInput);
@@ -39,17 +42,17 @@ namespace BokLogg.View
         public void SearchByBookName()
         {
             Console.Clear();
-            Console.WriteLine("|***************************************** BOKLOGG **************************************|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            HelperMethods.WriteColoredText("|\t\t\t\t\t SÖK EFTER BOK PÅ TITEL ELLER FÖRFATTARE \t\t\t\t|", "SÖK EFTER BOK PÅ TITEL ELLER FÖRFATTARE", ConsoleColor.Yellow);
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText("\t\t\t\t\t SÖK EFTER BOK PÅ TITEL ELLER FÖRFATTARE \t\t\t\t", "SÖK EFTER BOK PÅ TITEL ELLER FÖRFATTARE", ConsoleColor.Yellow);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
 
-            Console.WriteLine("Ange titel på boken (lämna tomt för att hoppa över):");
+            Console.WriteLine("\tAnge titel på boken (lämna tomt för att hoppa över):");
             string title = Console.ReadLine();
 
-            Console.WriteLine("Ange författarens namn (lämna tomt för att hoppa över):");
+            Console.WriteLine("\tAnge författarens namn (lämna tomt för att hoppa över):");
             string author = Console.ReadLine();
 
             var searchResults = bookController.SearchByTitleAndAuthor(title, author);
@@ -72,15 +75,16 @@ namespace BokLogg.View
             MainMenu.MainMenu_();
         }
 
+
         public void CheckStorage()
         {
             Console.Clear();
-            Console.WriteLine("|***************************************** BOKLOGG **************************************|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            HelperMethods.WriteColoredText("|\t\t\t\t\t   KONTROLLERA LAGRING \t\t\t\t\t\t|", "KONTROLLERA LAGRING", ConsoleColor.Yellow);
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText("\t\t\t\t\t   KONTROLLERA LAGRING \t\t\t\t\t\t", "KONTROLLERA LAGRING", ConsoleColor.Yellow);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
 
             Console.WriteLine("Tillgängliga lagringsplatser:");
             var storages = bookController.GetAvailableStorages();
@@ -111,6 +115,7 @@ namespace BokLogg.View
             Console.ReadKey();
             MainMenu.MainMenu_();
         }
+
 
     }
 }
