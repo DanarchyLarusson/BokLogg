@@ -159,7 +159,16 @@ namespace BokLogg.Controller
                 // Handle invalid book or storage
             }
         }
+        public List<string> GetGenres()
+        {
+            return new List<string> { "Fiction", "Non-fiction", "Mystery", "Thriller", "Science Fiction", "Fantasy", "Romance", "Historical", "Biography", "Self-help", "Poetry", "Drama", "Horror", "Comedy", "Adventure", "Children", "Young Adult" };
+        }
 
+        public List<Book> SearchByGenre(string genre)
+        {
+            var results = books.Where(book => book.Genre == genre).ToList();
+            return results;
+        }
 
     }
 

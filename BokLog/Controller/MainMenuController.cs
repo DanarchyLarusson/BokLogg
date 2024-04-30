@@ -75,9 +75,12 @@ namespace BokLogg.Controller
                     searchForm.SearchByBookName();
                     break;
                 case "2":
-                    searchForm.CheckStorage();
+                    searchForm.SearchByGenre();
                     break;
                 case "3":
+                    searchForm.CheckStorage();
+                    break;
+                case "4":
                     MainMenu.MainMenu_();
                     break;
                 default:

@@ -49,12 +49,32 @@ namespace BokLogg.View
                 Console.WriteLine("Ange skick (valfritt):");
                 string condition = Console.ReadLine();
 
+                Console.WriteLine("\nVälj genre för boken:");
+                List<string> genres = bookController.GetGenres();
+                for (int i = 0; i < genres.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {genres[i]}");
+                }
+                Console.WriteLine($"{genres.Count + 1}. Okänd");
+
+                int genreIndex;
+                string genreInput = Console.ReadLine();
+                if (!int.TryParse(genreInput, out genreIndex) || genreIndex < 1 || genreIndex > genres.Count + 1)
+                {
+                    Console.WriteLine("Ogiltig inmatning. Välj en siffra från listan.");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                string selectedGenre = genreIndex == genres.Count + 1 ? "Unknown" : genres[genreIndex - 1];
+
                 Book newBook = new Book
                 {
                     Title = title,
                     Author = author,
                     ReleaseYear = releaseYear,
-                    Condition = condition
+                    Condition = condition,
+                    Genre = selectedGenre
                 };
 
                 newBook.Storage = bookController.SelectedStorage;
@@ -68,11 +88,10 @@ namespace BokLogg.View
                 if (inputKey.KeyChar == 'x' || inputKey.KeyChar == 'X')
                 {
                     MainMenu.MainMenu_();
-                    break; 
+                    break;
                 }
             }
         }
-
-
     }
 }
+
