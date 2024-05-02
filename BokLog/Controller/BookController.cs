@@ -161,13 +161,18 @@ namespace BokLogg.Controller
         }
         public List<string> GetGenres()
         {
-            return new List<string> { "Fiction", "Non-fiction", "Mystery", "Thriller", "Science Fiction", "Fantasy", "Romance", "Historical", "Biography", "Self-help", "Poetry", "Drama", "Horror", "Comedy", "Adventure", "Children", "Young Adult" };
+            return new List<string> { "Antikviteter & Design", "Barn & Ungdom", "Bil & Motor", "Biografi & Genealogi", "Båtar & Nautika", "Data & IT", "Deckare & Thrillers", "Ekonomi & Näringsliv", "Etnologi & Antropologi", "Film & Teater", "Filosofi & Idéhistoria", "Flyg & Järnväg", "Foto", "Hantverk", "Hem & Trädgård", "Historia & Arkeologi", "Hobby & Fritid", "Humor", "Husdjur & Naturbruk", "Jakt & Fiske", "Juridik & Kriminologi", "Konst & Arkitektur", "Litteraturvetenskap", "Lyrik & Dramatik", "Mat & Dryck", "Media & Journalistik", "Medicin & Hälsa", "Militaria", "Musik", "Natur & Miljö", "Naturvet. & Matematik", "Psykologi & Pedagogik", "Religion & Esoterika", "Resor & Geografi", "Samhälle & Politik", "Sci-Fi & Fantasy", "Skönlitteratur", "Sport & Spel", "Språk & Ordböcker", "Teknik", "Topografi & Lokalhist", "Övrigt" };
         }
 
         public List<Book> SearchByGenre(string genre)
         {
             var results = books.Where(book => book.Genre == genre).ToList();
             return results;
+        }
+
+        public List<string> GetFormats()
+        {
+            return new List<string> { "Inbunden", "Häftad", "Pocket", "Ljudbok", "Tidningar & Tidskrifter", "Noter & Notblad", "Grafik, Kartor", "Brev, Dokument & Handskrifter", "Övrigt" };
         }
 
     }

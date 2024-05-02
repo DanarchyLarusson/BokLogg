@@ -34,7 +34,6 @@ namespace BokLogg.View
                 Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
                 Console.WriteLine("\t|*****************************************************************************************|");
 
-
                 Console.WriteLine("Ange titel på boken:");
                 string title = Console.ReadLine();
 
@@ -68,13 +67,32 @@ namespace BokLogg.View
 
                 string selectedGenre = genreIndex == genres.Count + 1 ? "Unknown" : genres[genreIndex - 1];
 
+                Console.WriteLine("\nVälj format för boken:");
+                List<string> formats = bookController.GetFormats();
+                for (int i = 0; i < formats.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {formats[i]}");
+                }
+
+                int formatIndex;
+                string formatInput = Console.ReadLine();
+                if (!int.TryParse(formatInput, out formatIndex) || formatIndex < 1 || formatIndex > formats.Count)
+                {
+                    Console.WriteLine("Ogiltig inmatning. Välj en siffra från listan.");
+                    Console.ReadKey();
+                    continue;
+                }
+
+                string selectedFormat = formats[formatIndex - 1];
+
                 Book newBook = new Book
                 {
                     Title = title,
                     Author = author,
                     ReleaseYear = releaseYear,
                     Condition = condition,
-                    Genre = selectedGenre
+                    Genre = selectedGenre,
+                    Format = selectedFormat
                 };
 
                 newBook.Storage = bookController.SelectedStorage;
@@ -92,6 +110,8 @@ namespace BokLogg.View
                 }
             }
         }
+
     }
 }
+
 
