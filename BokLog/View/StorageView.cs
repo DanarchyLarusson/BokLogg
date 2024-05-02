@@ -41,8 +41,24 @@ namespace BokLogg.View
             }
         }
 
+        private static void PrintHeader()
+        {
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText("\t\t\t\t\t LAGRINGSALTERNATIV \t\t\t\t\t", "LAGRINGSALTERNATIV", ConsoleColor.Yellow);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t|*****************************************************************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+        }
+
         public void ShowExistingStorages()
         {
+            Console.Clear();
+            PrintHeader();
+
             List<string> storages = bookController.GetAvailableStorages();
 
             Console.WriteLine("Tillgängliga lagringsalternativ:");
@@ -69,6 +85,7 @@ namespace BokLogg.View
                 else
                 {
                     Console.WriteLine("Skapandet av ny lagring avbröts.");
+                    Console.ReadKey();
                     MainMenu.MainMenu_();
                     return;
                 }
@@ -84,9 +101,11 @@ namespace BokLogg.View
             MainMenu.MainMenu_();
         }
 
-
         public void CreateNewStorage()
         {
+            Console.Clear();
+            PrintHeader();
+
             Console.WriteLine("Skriv in namnet för den nya lagringen:");
             string newStorageName = Console.ReadLine();
             bookController.SelectOrCreateStorage(newStorageName);
@@ -97,4 +116,5 @@ namespace BokLogg.View
         }
     }
 }
+
 
