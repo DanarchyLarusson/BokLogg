@@ -17,7 +17,6 @@ namespace BokLogg.Model
 
         public override string ToString()
         {
-            // Create a string representation of the member
             string memberInfo = $"--------------------------------\n" +
                                 $"Namn: {FirstName} {LastName}\n" +
                                 $"Registrerad: {DateOfRegistry.ToString("d")}\n" +

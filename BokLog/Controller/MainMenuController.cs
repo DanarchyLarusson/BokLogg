@@ -14,6 +14,8 @@ namespace BokLogg.Controller
         private static readonly BookRegisterView bookRegisterView = new BookRegisterView(bookController);
         private static readonly SearchForm searchForm = new SearchForm(bookController);
         private static readonly BookRemovalView bookRemovalView = new BookRemovalView(bookController);
+        private static readonly MemberController memberController = new MemberController();
+        private static readonly CheckMembersView checkMembersView = new CheckMembersView(memberController);
 
         public static void HandleMenuInput(string userInput)
         {
@@ -81,6 +83,25 @@ namespace BokLogg.Controller
                     searchForm.CheckStorage();
                     break;
                 case "4":
+                    MainMenu.MainMenu_();
+                    break;
+                default:
+                    Console.WriteLine("Ogiltigt val, Försök igen.");
+                    break;
+            }
+        }
+
+        public static void HandleMemberSearchOptionsInput(string userInput)
+        {
+            switch (userInput)
+            {
+                case "1":
+                    checkMembersView.DisplayAllMembers();
+                    break;
+                case "2":
+                    checkMembersView.SearchForMember();
+                    break;
+                case "3":
                     MainMenu.MainMenu_();
                     break;
                 default:
