@@ -32,7 +32,6 @@ namespace BokLogg.Controller
             }
             catch (Exception)
             {
-                // Handle exceptions
                 return new List<Book>();
             }
         }
@@ -46,7 +45,6 @@ namespace BokLogg.Controller
             }
             catch (Exception)
             {
-                // Handle exceptions
                 return new List<string>();
             }
         }

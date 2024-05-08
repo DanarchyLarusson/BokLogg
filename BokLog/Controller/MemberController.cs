@@ -62,36 +62,6 @@ namespace BokLogg.Controller
         {
             return members.FirstOrDefault(m => m.FirstName == firstName && m.LastName == lastName);
         }
-
-        public void CorrectOverdueBooks(string firstName, string lastName, int newOverdueBooks)
-        {
-            Member member = GetMemberByName(firstName, lastName);
-            if (member != null)
-            {
-                member.NumberOfOverdueBooks = newOverdueBooks;
-                List<Member> updatedMembers = new List<Member>(members);
-                SaveMembersToJson(updatedMembers);
-            }
-            else
-            {
-                // Handle member not found
-            }
-        }
-
-        public void CorrectFailedReturns(string firstName, string lastName, int newFailedReturns)
-        {
-            Member member = GetMemberByName(firstName, lastName);
-            if (member != null)
-            {
-                member.NumberOfFailedReturns = newFailedReturns;
-                List<Member> updatedMembers = new List<Member>(members);
-                SaveMembersToJson(updatedMembers);
-            }
-            else
-            {
-                // Handle member not found
-            }
-        }
     }
 }
 
