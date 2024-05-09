@@ -16,6 +16,7 @@ namespace BokLogg.Controller
         private static readonly BookRemovalView bookRemovalView = new BookRemovalView(bookController);
         private static readonly MemberController memberController = new MemberController();
         private static readonly CheckMembersView checkMembersView = new CheckMembersView(memberController);
+        private static readonly AddMemberView addMemberView = new AddMemberView(memberController);
 
         public static void HandleMenuInput(string userInput)
         {
@@ -36,6 +37,12 @@ namespace BokLogg.Controller
                         BookRemovalView.ShowStorageListAndSelect();
                         break;
                     case 5:
+                        addMemberView.AddMember();
+                        break;
+                    case 6:
+                        CheckMembersView.DisplayMenu();
+                        break;
+                    case 7:
                         Console.WriteLine("Exiting...");
                         Environment.Exit(0);
                         break;

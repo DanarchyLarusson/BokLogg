@@ -26,7 +26,11 @@ namespace BokLogg.View
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t 04.- Ta bort böcker \t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
-            Console.WriteLine("\t\t\t\t\t 05.- Avsluta \t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 05.- Lägg till ny Medlem \t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 06.- Medlemslista \t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 07.- Avsluta \t\t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("|*******************************************************************************************************|");
             Console.WriteLine("Skriv in siffran efter ditt val:");

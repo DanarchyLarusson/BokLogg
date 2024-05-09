@@ -1,4 +1,5 @@
 ﻿using BokLogg.Model;
+using BokLogg.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace BokLogg.Controller
         private string selectedStorage;
         private string relativePathBooks = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data")), "booklog.json");
         private string relativePathStorages = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data")), "storages.json");
+        private static readonly ErrorExceptions errorExceptions = new ErrorExceptions();
 
         public BookController()
         {
@@ -32,6 +34,8 @@ namespace BokLogg.Controller
             }
             catch (Exception)
             {
+                ErrorExceptions.LoadBooksError();
+                MoveCorruptedFile(relativePathBooks, "CorruptedBooks.json");
                 return new List<Book>();
             }
         }
@@ -45,6 +49,8 @@ namespace BokLogg.Controller
             }
             catch (Exception)
             {
+                ErrorExceptions.LoadBooksError();
+                MoveCorruptedFile(relativePathStorages, "CorruptedStorages.json");
                 return new List<string>();
             }
         }
@@ -61,7 +67,7 @@ namespace BokLogg.Controller
             }
             catch
             {
-                // Handle exceptions
+                ErrorExceptions.SaveBookError();
             }
         }
 
@@ -77,7 +83,7 @@ namespace BokLogg.Controller
             }
             catch
             {
-                // Handle exceptions
+                ErrorExceptions.SaveStorageError();
             }
         }
 
@@ -142,7 +148,7 @@ namespace BokLogg.Controller
             }
             else
             {
-                // Handle invalid 
+                ErrorExceptions.BookRemovalError();
             }
         }
         public void RemoveBookFromStorage(string storageName, Book bookToRemove)
@@ -154,7 +160,7 @@ namespace BokLogg.Controller
             }
             else
             {
-                // Handle invalid book or storage
+                ErrorExceptions.BookRemovalError();
             }
         }
         public List<string> GetGenres()
@@ -172,6 +178,12 @@ namespace BokLogg.Controller
         {
             return new List<string> { "Inbunden", "Häftad", "Pocket", "Ljudbok", "Tidningar & Tidskrifter", "Noter & Notblad", "Grafik, Kartor", "Brev, Dokument & Handskrifter", "Övrigt" };
         }
+
+        public static void MoveCorruptedFile(string filePath, string destinationPath)
+        {
+            File.Move(filePath, destinationPath);
+        }
+
 
     }
 

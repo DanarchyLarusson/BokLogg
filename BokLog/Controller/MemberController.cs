@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using BokLogg.Model;
+using BokLogg.View;
 
 namespace BokLogg.Controller
 {
@@ -11,6 +12,7 @@ namespace BokLogg.Controller
     {
         private List<Member> members;
         private string relativePathMembers = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data")), "people.json");
+        private static readonly ErrorExceptions errorExceptions = new ErrorExceptions();
 
         public MemberController()
         {
@@ -26,7 +28,7 @@ namespace BokLogg.Controller
             }
             catch (Exception)
             {
-                // Handle exceptions
+                ErrorExceptions.LoadMembersError();
                 return new List<Member>();
             }
         }
@@ -43,7 +45,7 @@ namespace BokLogg.Controller
             }
             catch
             {
-                // Handle exceptions
+                ErrorExceptions.SaveMemberError();
             }
         }
 
