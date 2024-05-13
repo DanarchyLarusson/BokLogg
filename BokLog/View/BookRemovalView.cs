@@ -47,7 +47,8 @@ namespace BokLogg.View
             }
             else
             {
-                // Handle invalid input
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t Lista av lådor kunde ej laddas \t\t\t\t\t\t");
             }
         }
 
@@ -79,7 +80,8 @@ namespace BokLogg.View
             }
             else
             {
-                // Handle invalid input
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t Lista av böcker kunde ej laddas \t\t\t\t\t\t");
             }
         }
 
