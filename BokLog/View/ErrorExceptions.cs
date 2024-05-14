@@ -137,5 +137,38 @@ namespace BokLogg.View
             HelperMethods.ReadLine();
             MainMenu.MainMenu_();
         }
+        public static void LoadLoansError()
+        {
+            Console.Clear();
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText($"Fel vid inläsning av lån från fil", "Fel", ConsoleColor.Red);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("Ett fel uppstod vid försök att läsa in lån från fil.");
+            Console.WriteLine("En ny lista för lån har skapats.");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("Tryck på valfri tangent för att återgå till huvudmenyn.");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t|*****************************************************************************************|");
+            HelperMethods.ReadLine();
+            MainMenu.MainMenu_();
+        }
+        public static void SaveLoanError()
+        {
+            Console.Clear();
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText($"Felkod", "Error", ConsoleColor.Red);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("Ett fel hindrar lån från att sparas. Vänligen försök igen");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("Tryck på valfri tangent för att återgå till huvudmenyn.");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t|*****************************************************************************************|");
+            HelperMethods.ReadLine();
+            MainMenu.MainMenu_();
+        }
     }
 }

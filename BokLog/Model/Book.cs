@@ -19,7 +19,16 @@ namespace BokLogg.Model
 
         public override string ToString()
         {
-            return $"Titel: {Title} - Författare: {Author} - Utgivningsår: {ReleaseYear} - Status: {Condition} - Låda: {Storage} - Genre: {Genre} - Format: {Format} - Logg Datum: {DateOfRegistry.ToString("d")}";
+            return $"--------------------------------\n" +
+                   $"Titel: {Title}\n" +
+                   $"Författare: {Author}\n" +
+                   $"Utgivningsår: {ReleaseYear}\n" +
+                   $"Status: {Condition}\n" +
+                   $"Låda: {Storage}\n" +
+                   $"Genre: {Genre}\n" +
+                   $"Format: {Format}\n" +
+                   $"Logg Datum: {DateOfRegistry.ToString("d")}\n" +
+                   $"--------------------------------\n";
         }
     }
 }
