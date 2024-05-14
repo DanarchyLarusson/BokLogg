@@ -37,10 +37,18 @@ namespace BokLogg.View
                 Console.WriteLine("Ange efternamn:");
                 string lastName = Console.ReadLine();
 
+                Console.WriteLine("Ange Telefon nummer:");
+                string phone = Console.ReadLine();
+
+                Console.WriteLine("Ange Mail:");
+                string email = Console.ReadLine();
+
                 Member newMember = new Member
                 {
                     FirstName = firstName,
-                    LastName = lastName
+                    LastName = lastName,
+                    ContactNumber = phone,
+                    Email = email
                 };
 
                 memberController.AddMember(newMember);
