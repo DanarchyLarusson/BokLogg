@@ -57,13 +57,24 @@ namespace BokLogg.View
                 Console.WriteLine($"{genres.Count + 1}. Okänd");
 
                 int genreIndex;
-                string genreInput = Console.ReadLine();
-                if (!int.TryParse(genreInput, out genreIndex) || genreIndex < 1 || genreIndex > genres.Count + 1)
+                do
                 {
+                    Console.WriteLine("\nVälj genre för boken:");
+                    for (int i = 0; i < genres.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {genres[i]}");
+                    }
+                    Console.WriteLine($"{genres.Count + 1}. Okänd");
+
+                    string userInput = Console.ReadLine();
+                    if (int.TryParse(userInput, out genreIndex) && (genreIndex >= 1 && genreIndex <= genres.Count + 1))
+                    {
+                        break;  
+                    }
                     Console.WriteLine("Ogiltig inmatning. Välj en siffra från listan.");
-                    Console.ReadKey();
-                    continue;
-                }
+                } while (true);
+
+
 
                 string selectedGenre = genreIndex == genres.Count + 1 ? "Unknown" : genres[genreIndex - 1];
 
@@ -75,13 +86,23 @@ namespace BokLogg.View
                 }
 
                 int formatIndex;
-                string formatInput = Console.ReadLine();
-                if (!int.TryParse(formatInput, out formatIndex) || formatIndex < 1 || formatIndex > formats.Count)
+                do
                 {
+                    Console.WriteLine("\nVälj format för boken:");
+                    for (int i = 0; i < formats.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {formats[i]}");
+                    }
+
+                    string userInput = Console.ReadLine();
+                    if (int.TryParse(userInput, out formatIndex) && (formatIndex >= 1 && formatIndex <= formats.Count))
+                    {
+                        break;  
+                    }
                     Console.WriteLine("Ogiltig inmatning. Välj en siffra från listan.");
-                    Console.ReadKey();
-                    continue;
-                }
+                } while (true);
+
+
 
                 string selectedFormat = formats[formatIndex - 1];
 
@@ -99,8 +120,16 @@ namespace BokLogg.View
 
                 bookController.AddBook(newBook);
 
+                Console.Clear();
+                Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
                 Console.WriteLine("Boken har registrerats!");
                 Console.WriteLine("Tryck på valfri tangent för att fortsätta registrera, eller 'x' för att gå tillbaka till menyn...");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                Console.WriteLine("\t|*****************************************************************************************|");
+
                 var inputKey = Console.ReadKey();
 
                 if (inputKey.KeyChar == 'x' || inputKey.KeyChar == 'X')
@@ -110,6 +139,7 @@ namespace BokLogg.View
                 }
             }
         }
+
 
     }
 }

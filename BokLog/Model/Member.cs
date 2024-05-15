@@ -13,8 +13,6 @@ namespace BokLogg.Model
         public string ContactNumber { get; set; }
         public string Email { get; set; }
         public DateTime DateOfRegistry { get; set; } = DateTime.Now;
-        public int NumberOfLoans { get; set; }
-        public int NumberOfOverdueBooks { get; set; }
 
         public override string ToString()
         {
@@ -23,8 +21,6 @@ namespace BokLogg.Model
                                 $"Telefon: {ContactNumber}\n" +
                                 $"Mail: {Email}\n" +
                                 $"Registrerad: {DateOfRegistry.ToString("d")}\n" +
-                                $"Antal Lån: {NumberOfLoans}\n" +
-                                $"Försenade Lån: {NumberOfOverdueBooks}\n" +
                                 $"--------------------------------\n";
 
             return memberInfo;
