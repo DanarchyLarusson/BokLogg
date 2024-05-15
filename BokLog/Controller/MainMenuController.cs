@@ -43,6 +43,9 @@ namespace BokLogg.Controller
                         CheckMembersView.DisplayMenu();
                         break;
                     case 7:
+                        LoaningMenu.DisplayMenu();
+                        break;
+                    case 8:
                         Console.WriteLine("Exiting...");
                         Environment.Exit(0);
                         break;
@@ -113,6 +116,30 @@ namespace BokLogg.Controller
                     break;
                 default:
                     Console.WriteLine("Ogiltigt val, Försök igen.");
+                    break;
+            }
+        }
+
+        public static void HandleLoaningMenuInput(string userInput)
+        {
+            switch (userInput)
+            {
+                case "1":
+                    LoaningMenu.LoanBook();
+                    break;
+                case "2":
+                    LoaningMenu.CheckActiveLoansAndReturn();
+                    break;
+                case "3":
+                    LoaningMenu.CheckReturnBox();
+                    break;
+                case "4":
+                    MainMenu.MainMenu_();
+                    break;
+                default:
+                    Console.WriteLine("Ogiltigt val, försök igen.");
+                    Console.ReadKey();
+                    LoaningMenu.DisplayMenu();
                     break;
             }
         }

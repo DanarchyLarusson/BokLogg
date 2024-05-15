@@ -30,7 +30,9 @@ namespace BokLogg.View
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t 06.- Medlemslista \t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
-            Console.WriteLine("\t\t\t\t\t 07.- Avsluta \t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 07.- Lånehantering \t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 09.- Avsluta \t\t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("|*******************************************************************************************************|");
             Console.WriteLine("Skriv in siffran efter ditt val:");
