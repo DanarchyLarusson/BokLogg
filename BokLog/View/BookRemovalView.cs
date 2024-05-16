@@ -18,7 +18,7 @@ namespace BokLogg.View
             bookController = controller;
         }
 
-        public static void ShowStorageListAndSelect()
+        public void ShowStorageListAndSelect()
         {
             Console.Clear();
             Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
@@ -27,12 +27,11 @@ namespace BokLogg.View
             HelperMethods.WriteColoredText("\t\t\t\t\t VÄLJ LAGRING ATT TA BORT FRÅN \t\t\t\t", "VÄLJ LAGRING ATT TA BORT FRÅN", ConsoleColor.Yellow);
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
 
-            var bookController = new BookController();
             var storages = bookController.GetAvailableStorages();
 
             for (int i = 0; i < storages.Count; i++)
             {
-                Console.WriteLine($"|\t{i + 1}. {storages[i]}\t\t\t\t\t\t\t\t\t|");
+                Console.WriteLine($"\t{i + 1}. {storages[i]}\t\t\t\t\t\t\t\t\t");
             }
 
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
@@ -52,16 +51,15 @@ namespace BokLogg.View
             }
         }
 
-        public static void ShowBookListAndSelect(string selectedStorage)
+        public void ShowBookListAndSelect(string selectedStorage)
         {
             Console.Clear();
             Console.WriteLine("|***************************************** BOKLOGG **************************************|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
             HelperMethods.WriteColoredText($"|\t\t\t\t\t BÖCKER I LAGRINGEN \"{selectedStorage}\" \t\t\t\t|", $"BÖCKER I LAGRINGEN \"{selectedStorage}\"", ConsoleColor.Yellow);
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
 
-            var bookController = new BookController();
             var booksInStorage = bookController.SearchByStorage(selectedStorage);
 
             for (int i = 0; i < booksInStorage.Count; i++)
@@ -69,7 +67,7 @@ namespace BokLogg.View
                 Console.WriteLine($"|\t{i + 1}. {booksInStorage[i].Title} by {booksInStorage[i].Author}\t\t\t\t|");
             }
 
-            Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("|*****************************************************************************************|");
             Console.WriteLine("Skriv in numret för boken att ta bort:");
             string userInput = Console.ReadLine();
@@ -85,16 +83,16 @@ namespace BokLogg.View
             }
         }
 
-        public static void ShowConfirmationAndRemove(string selectedStorage, Book bookToRemove)
+        public void ShowConfirmationAndRemove(string selectedStorage, Book bookToRemove)
         {
             while (true)
             {
                 Console.Clear();
                 Console.WriteLine("|***************************************** BOKLOGG **************************************|");
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
                 Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
                 HelperMethods.WriteColoredText($"|\t\t\t\t\t BEKRÄFTA BORTTAGNING AV BOKEN \t\t\t\t|", $"BEKRÄFTA BORTTAGNING AV BOKEN", ConsoleColor.Yellow);
-                Console.WriteLine("|\t\t\t\t\t\t\t\t\t\t\t\t\t|");
+                Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
 
                 Console.WriteLine($"Bok att ta bort: {bookToRemove.Title} by {bookToRemove.Author}");
                 Console.WriteLine($"Från lagringen: {selectedStorage}");
@@ -103,14 +101,17 @@ namespace BokLogg.View
                 string userInput = Console.ReadLine();
                 if (userInput.Equals("Ja", StringComparison.OrdinalIgnoreCase))
                 {
-                    var bookController = new BookController();
                     bookController.RemoveBookFromStorage(selectedStorage, bookToRemove);
                     Console.WriteLine("Boken har tagits bort.");
+                    Console.ReadKey();
+                    MainMenu.MainMenu_();
                     break;
                 }
                 else if (userInput.Equals("Nej", StringComparison.OrdinalIgnoreCase))
                 {
                     Console.WriteLine("Borttagningen avbröts.");
+                    Console.ReadKey();
+                    MainMenu.MainMenu_();
                     break;
                 }
                 else if (userInput.Equals("x", StringComparison.OrdinalIgnoreCase))
@@ -128,3 +129,4 @@ namespace BokLogg.View
         }
     }
 }
+

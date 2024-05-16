@@ -101,11 +101,20 @@ namespace BokLogg.View
                     var overdueDays = (DateTime.Today - loan.ReturnDate).Days;
 
                     string overdueText = overdueDays > 0 ? $" - FÖRSENAD {overdueDays} dagar" : "";
-                    Console.WriteLine($"{i + 1}. {loan.book.Title} av {loan.book.Author}, lånad av {loan.member.FirstName} {loan.member.LastName}{overdueText}");
+                    Console.WriteLine($"{i + 1}. {loan.book.Title} av {loan.book.Author}, lånad av {loan.member.FirstName} {loan.member.LastName}, Återlämningsdatum: {loan.ReturnDate.ToShortDateString()}{overdueText}");
                 }
 
-                Console.WriteLine("\nAnge numret på lånet du vill återlämna:");
-                if (int.TryParse(Console.ReadLine(), out int loanIndex) && loanIndex > 0 && loanIndex <= activeLoans.Count)
+                Console.WriteLine("\nAnge numret på lånet du vill återlämna (eller skriv 'X' för att återgå):");
+                string input = Console.ReadLine();
+
+                if (input?.ToLower() == "x")
+                {
+                    Console.WriteLine("Återgår till menyn...");
+                    DisplayMenu();
+                    return;
+                }
+
+                if (int.TryParse(input, out int loanIndex) && loanIndex > 0 && loanIndex <= activeLoans.Count)
                 {
                     var selectedLoan = activeLoans[loanIndex - 1];
                     Console.WriteLine($"Vill du återlämna boken \"{selectedLoan.book.Title}\"? (ja/nej)");
@@ -135,6 +144,7 @@ namespace BokLogg.View
             Console.ReadKey();
             DisplayMenu();
         }
+
 
         public static void CheckReturnBox()
         {

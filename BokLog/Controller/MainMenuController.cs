@@ -34,7 +34,7 @@ namespace BokLogg.Controller
                         SearchForm.SearchOptions();
                         break;
                     case 4:
-                        BookRemovalView.ShowStorageListAndSelect();
+                        bookRemovalView.ShowStorageListAndSelect();
                         break;
                     case 5:
                         addMemberView.AddMember();
@@ -56,7 +56,7 @@ namespace BokLogg.Controller
             }
             else
             {
-                Console.WriteLine("Invalid choice. Please try again.");
+                MainMenu.MainMenu_();
             }
         }
 
