@@ -46,6 +46,9 @@ namespace BokLogg.Controller
                         LoaningMenu.DisplayMenu();
                         break;
                     case 8:
+                        SalesManagementView.DisplayMenu();
+                        break;
+                    case 9:
                         Console.WriteLine("Exiting...");
                         Environment.Exit(0);
                         break;
@@ -112,6 +115,9 @@ namespace BokLogg.Controller
                     checkMembersView.SearchForMember();
                     break;
                 case "3":
+                    checkMembersView.RemoveMember();
+                    break;
+                case "4":
                     MainMenu.MainMenu_();
                     break;
                 default:
@@ -143,8 +149,25 @@ namespace BokLogg.Controller
                     break;
             }
         }
+
+        public static void SalesHandleMenuInput(string userInput)
+        {
+            switch (userInput)
+            {
+                case "1":
+                    SalesManagementView.SellBook();
+                    break;
+                case "2":
+                    SalesManagementView.DisplaySalesHistory();
+                    break;
+                case "3":
+                    MainMenu.MainMenu_();
+                    break;
+                default:
+                    Console.WriteLine("Ogiltigt val, försök igen.");
+                    SalesManagementView.DisplayMenu();
+                    break;
+            }
+        }
     }
 }
-
-
-

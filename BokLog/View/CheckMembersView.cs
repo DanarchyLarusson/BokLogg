@@ -29,7 +29,9 @@ namespace BokLogg.View
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t 2. Sök efter medlem \t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
-            Console.WriteLine("\t\t\t\t\t 3. Tillbaka till huvudmeny \t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 3. Ta bort medlem \t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 4. Tillbaka till huvudmeny \t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("\t|*****************************************************************************************|");
             Console.WriteLine("Skriv in siffran efter ditt val:");
@@ -99,6 +101,53 @@ namespace BokLogg.View
             Console.ReadKey();
             DisplayMenu();
         }
+        public void RemoveMember()
+        {
+            Console.Clear();
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText("\t\t\t\t\t\t\t   TA BORT MEDLEM \t\t\t\t\t\t", "TA BORT MEDLEM", ConsoleColor.Yellow);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+
+            Console.WriteLine("Ange förnamn på medlemmen:");
+            string firstName = Console.ReadLine();
+
+            Console.WriteLine("Ange efternamn på medlemmen:");
+            string lastName = Console.ReadLine();
+
+            var member = memberController.GetMemberByName(firstName, lastName);
+
+            if (member != null)
+            {
+                Console.WriteLine($"\nTa bort {member.FirstName} {member.LastName}? Y/N");
+                string confirmation = Console.ReadLine().ToUpper();
+
+                if (confirmation == "Y")
+                {
+                    memberController.RemoveMember(firstName, lastName);
+                    Console.WriteLine("\nMedlem borttagen.");
+                }
+                else if (confirmation == "N")
+                {
+                    Console.WriteLine("\nMedlemmen har inte tagits bort.");
+                }
+                else
+                {
+                    Console.WriteLine("\nOgiltigt val. Återgår till menyn...");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nIngen medlem hittades med angivet namn.");
+            }
+
+            Console.WriteLine("\nTryck på valfri tangent för att återgå till menyn...");
+            Console.ReadKey();
+            DisplayMenu();
+        }
+
     }
 }
 

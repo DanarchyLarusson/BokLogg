@@ -170,5 +170,39 @@ namespace BokLogg.View
             HelperMethods.ReadLine();
             MainMenu.MainMenu_();
         }
+
+        public static void SaveSaleError()
+        {
+            Console.Clear();
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText($"Felkod", "Error", ConsoleColor.Red);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("Ett fel hindrar summa från att sparas");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("Tryck på valfri tangent för att återgå till huvudmenyn.");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t|*****************************************************************************************|");
+            HelperMethods.ReadLine();
+            MainMenu.MainMenu_();
+        }
+
+        public static void MemberNotFoundError()
+        {
+            Console.Clear();
+            Console.WriteLine("\t|***************************************** BOKLOGG **************************************|");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            HelperMethods.WriteColoredText($"Felkod", "Error", ConsoleColor.Red);
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("Medlemmen kunde ej hittas.");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("Tryck på valfri tangent för att återgå till huvudmenyn.");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t|*****************************************************************************************|");
+            HelperMethods.ReadLine();
+            MainMenu.MainMenu_();
+        }
     }
 }

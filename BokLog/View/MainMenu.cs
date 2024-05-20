@@ -32,6 +32,8 @@ namespace BokLogg.View
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t 07.- Lånehantering \t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t 08.- Försäljning \t\t\t\t\t\t");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t 09.- Avsluta \t\t\t\t\t\t\t");
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t");
             Console.WriteLine("|*******************************************************************************************************|");

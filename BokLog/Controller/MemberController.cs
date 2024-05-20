@@ -64,6 +64,19 @@ namespace BokLogg.Controller
         {
             return members.FirstOrDefault(m => m.FirstName == firstName && m.LastName == lastName);
         }
+        public void RemoveMember(string firstName, string lastName)
+        {
+            Member memberToRemove = GetMemberByName(firstName, lastName);
+            if (memberToRemove != null)
+            {
+                members.Remove(memberToRemove);
+                SaveMembersToJson(members);
+            }
+            else
+            {
+                ErrorExceptions.MemberNotFoundError();
+            }
+        }
     }
 }
 
