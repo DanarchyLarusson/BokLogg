@@ -11,14 +11,17 @@ namespace BokLogg.Controller
     public class MemberController
     {
         private List<Member> members;
-        private string relativePathMembers = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data")), "people.json");
+        private string relativePathMembers;
+
         private static readonly ErrorExceptions errorExceptions = new ErrorExceptions();
 
         public MemberController()
         {
+            string dataDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            relativePathMembers = Path.Combine(dataDirectory, "people.json");
+
             members = LoadMembersFromJson();
         }
-
         private List<Member> LoadMembersFromJson()
         {
             try

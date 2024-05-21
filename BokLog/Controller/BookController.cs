@@ -15,18 +15,27 @@ namespace BokLogg.Controller
         private List<string> storages;
         private List<Sale> sales;
         private string selectedStorage;
-        private string relativePathBooks = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data")), "booklog.json");
-        private string relativePathStorages = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data")), "storages.json");
-        private string relativePathSales = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data")), "earnings.json");
+
+        private string dataDirectory;
+        private string relativePathBooks;
+        private string relativePathStorages;
+        private string relativePathSales;
+
         private static readonly ErrorExceptions errorExceptions = new ErrorExceptions();
 
         public BookController()
         {
+            dataDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            relativePathBooks = Path.Combine(dataDirectory, "booklog.json");
+            relativePathStorages = Path.Combine(dataDirectory, "storages.json");
+            relativePathSales = Path.Combine(dataDirectory, "earnings.json");
+
             books = LoadBooksFromJson();
             storages = LoadStoragesFromJson();
             selectedStorage = storages.FirstOrDefault();
             sales = LoadSalesFromJson();
         }
+
 
         private List<Book> LoadBooksFromJson()
         {
@@ -38,7 +47,7 @@ namespace BokLogg.Controller
             catch (Exception)
             {
                 ErrorExceptions.LoadBooksError();
-                MoveCorruptedFile(relativePathBooks, "CorruptedBooks.json");
+                MoveCorruptedFile(relativePathBooks, Path.Combine(dataDirectory, "CorruptedBooks.json"));
                 return new List<Book>();
             }
         }
@@ -53,7 +62,7 @@ namespace BokLogg.Controller
             catch (Exception)
             {
                 ErrorExceptions.LoadBooksError();
-                MoveCorruptedFile(relativePathStorages, "CorruptedStorages.json");
+                MoveCorruptedFile(relativePathStorages, Path.Combine(dataDirectory, "CorruptedStorages.json"));
                 return new List<string>();
             }
         }
@@ -68,7 +77,7 @@ namespace BokLogg.Controller
             catch (Exception)
             {
                 ErrorExceptions.LoadBooksError();
-                MoveCorruptedFile(relativePathSales, "CorruptedSales.json");
+                MoveCorruptedFile(relativePathSales, Path.Combine(dataDirectory, "CorruptedSales.json"));
                 return new List<Sale>();
             }
         }
@@ -78,15 +87,11 @@ namespace BokLogg.Controller
             return sales;
         }
 
-
         private void SaveBooksToJson(List<Book> books)
         {
             try
             {
-                string jsonData = JsonSerializer.Serialize(books, typeof(List<Book>), new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
+                string jsonData = JsonSerializer.Serialize(books, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(relativePathBooks, jsonData);
             }
             catch
@@ -99,10 +104,7 @@ namespace BokLogg.Controller
         {
             try
             {
-                string jsonData = JsonSerializer.Serialize(storages, typeof(List<string>), new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
+                string jsonData = JsonSerializer.Serialize(storages, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(relativePathStorages, jsonData);
             }
             catch
@@ -115,10 +117,7 @@ namespace BokLogg.Controller
         {
             try
             {
-                string jsonData = JsonSerializer.Serialize(sales, typeof(List<Sale>), new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
+                string jsonData = JsonSerializer.Serialize(sales, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(relativePathSales, jsonData);
             }
             catch
@@ -126,7 +125,6 @@ namespace BokLogg.Controller
                 ErrorExceptions.SaveSaleError();
             }
         }
-
 
         public List<string> GetAvailableStorages()
         {
@@ -155,6 +153,7 @@ namespace BokLogg.Controller
             books.Add(book);
             SaveBooksToJson(books);
         }
+
         public List<Book> SearchByTitleAndAuthor(string title, string author)
         {
             title = title.ToLower();
@@ -168,11 +167,9 @@ namespace BokLogg.Controller
             return results;
         }
 
-
         public List<Book> SearchByStorage(string storageName)
         {
             var results = books.Where(book => book.Storage == storageName).ToList();
-
             return results;
         }
 
@@ -181,17 +178,15 @@ namespace BokLogg.Controller
             if (bookIndex >= 0 && bookIndex < books.Count)
             {
                 Book bookToRemove = books[bookIndex];
-
                 books.Remove(bookToRemove);
-
                 SaveBooksToJson(books);
-
             }
             else
             {
                 ErrorExceptions.BookRemovalError();
             }
         }
+
         public void RemoveBookFromStorage(string storageName, Book bookToRemove)
         {
             if (books.Contains(bookToRemove) && bookToRemove.Storage == storageName)
@@ -282,9 +277,8 @@ namespace BokLogg.Controller
 
             return itemCount;
         }
-
-
     }
+
 
 
 }

@@ -11,12 +11,17 @@ namespace BokLogg.Controller
     public class LoanController
     {
         private List<Loan> loans;
-        private readonly string relativePathLoans = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data")), "loans.json");
-        private readonly string relativePathReturnBox = Path.Combine(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data")), "returnBox.json");
+        private string relativePathLoans;
+        private string relativePathReturnBox;
+
         private static readonly ErrorExceptions errorExceptions = new ErrorExceptions();
 
         public LoanController()
         {
+            string dataDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            relativePathLoans = Path.Combine(dataDirectory, "loans.json");
+            relativePathReturnBox = Path.Combine(dataDirectory, "returnBox.json");
+
             loans = LoadLoansFromJson(relativePathLoans);
         }
 
